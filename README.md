@@ -4,4 +4,4 @@ Welcome to my (temporary) personal blog. I chose GitHub for its nice Markdown an
 A custom blog website is in the work, with support for interactive animation and visualization.
 
 List of blog posts:
-
+- [An exploration of unconventional number bases](https://github.com/BlacCod/blog/blob/blog-archive/unconventional-bases.md)
