@@ -1,14 +1,17 @@
 import { getPosts } from "@/app/utils";
-import Link from "./Link";
+import Link from "@/components/Link";
+import type { Metadata } from "next";
 
-export function ShortBlogList() {
+export const metadata: Metadata = {
+  title: "Posts",
+};
+
+export default function Posts() {
   const posts = getPosts();
+
   return (
-    <>
-      <div className="flex flex-wrap justify-between">
-        <h4 className="font-semibold">Recent posts</h4>
-        <Link href="/posts">See all</Link>
-      </div>
+    <div>
+      <h2>All Posts</h2>
       <ul>
         {posts.map((post: any) => (
           <li key={post.slug}>
@@ -16,6 +19,6 @@ export function ShortBlogList() {
           </li>
         ))}
       </ul>
-    </>
+    </div>
   );
 }

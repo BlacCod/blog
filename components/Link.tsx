@@ -4,16 +4,18 @@ import type { ComponentProps } from "react";
 type LinkProps = ComponentProps<typeof NextLink> & {
   className?: string;
   underline?: boolean;
-  external?: boolean;
 };
 
 export default function Link({
   className,
-  external,
   underline = true,
   ...restProps
 }: LinkProps) {
-  const externalProps = external
+  const isExternal =
+    typeof restProps.href === "string" &&
+    (restProps.href.startsWith("http") || restProps.href.startsWith("mailto:"));
+
+  const externalProps = isExternal
     ? { target: "_blank", rel: "noopener noreferrer" }
     : {};
   return (
