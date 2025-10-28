@@ -1,18 +1,21 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import {
+  Atkinson_Hyperlegible,
+  Atkinson_Hyperlegible_Mono,
+} from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/NavBar";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const atkinson = Atkinson_Hyperlegible({
+  weight: "400",
+  variable: "--font-atkinson",
+  subsets: ["latin-ext"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const atkinsonMono = Atkinson_Hyperlegible_Mono({
+  variable: "--font-atkinson-mono",
   subsets: ["latin"],
 });
-
 export const metadata: Metadata = {
   title: {
     template: "%s | Vu Huy Nguyen",
@@ -29,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${atkinson.variable} ${atkinsonMono.variable} antialiased`}
       >
         <main className="mx-auto max-w-screen-sm px-5">
           <NavBar />
