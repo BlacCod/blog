@@ -1,0 +1,24 @@
+---
+title: Update git commit author and email for all commits in repo without changing original commit date
+publishedAt: "2025-10-28"
+slug: "update-git-author"
+---
+
+GitHub has the feature where they [provide you with a `noreply`
+email](https://docs.github.com/en/account-and-profile/reference/email-addresses-reference#your-noreply-email-address)
+to protect the privacy of your main email and will block you from pushing if you
+tries to push commits that contain your real email.  I have multiple repos that
+I commited with the "wrong" email address, which causes problem when I try to
+push them to GitHub for archiving
+
+This command
+([source](https://stackoverflow.com/questions/41301627/how-to-update-git-commit-author-but-keep-original-date-when-amending))
+will change the commit author's name and email address, while keeping the
+original commit date unmodified
+```bash
+git -c rebase.instructionFormat='%s%nexec GIT_COMMITTER_DATE="%cD"
+GIT_AUTHOR_DATE="%aD" \
+git commit --amend --no-edit --reset-author' rebase -f <commit/branch before wrong author and email, or --root to rebase all> 
+```
+
+Note that this will also change all commits' hashes.

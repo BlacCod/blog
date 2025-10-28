@@ -1,0 +1,90 @@
+---
+
+title: An exploration of unconventional number bases
+publishedAt: "2025-10-27"
+slug: "an-exploration-of-unconventional-number-bases"
+
+---
+
+We are all familiar with the base-10  number system, where the value of the
+digits is determined by their positions. For example, the number 1234 will have
+the value:
+
+$$ 1234_{10} = 1 * 10^3+2*10^2+3*10^1+4*10^0 $$
+
+Pretty standard, right? Time to change some parts of the system
+
+## What's the general form?
+
+It's quite trivial, actually. This system is generally called [positional
+numeral system](https://en.wikipedia.org/wiki/Positional_notation). Number with
+digits $x_0 x_1...x_n$ in base $b$ has the value
+
+$$ {x_0x_1...x_n}_b = x_0 * b^{n} + x_1 * b^{n-1} + ... + x_n*b^{0} $$
+
+where b is a positive integer, and $x_0,...x_n$ are numbers from 0 to n-1
+
+## Negabinary
+
+Let's try to plug $b = -2$ to the equation, and see what happens. As base 2
+system uses 0 and 1 as its digits, let's also use them for our hypothetical
+experiment. A number 1101 in base -2 will have the value
+
+$$ 1101_{-2} = 1*(-2)^3+1*(-2)^2+0*(-2)^1+1*(-2)^0 =-8+4+1=-3 $$
+
+Unlike traditional positive bases, the multiplier value of negative bases
+alternates between positive and negative. This makes it somewhat useful for
+representing negative numbers without having to explicitly represent the
+negative sign (like in the one's complement). However, it still uses one extra
+bit anyway, and is much more convoluted to mentally convert, compared to two's
+complement. This number system is also called
+[negabinary](https://en.wikipedia.org/wiki/Negative_base) (base -2) or
+negadecimal (base -10)
+
+## Complex base
+
+How about we plug $ b = i $ into the
+equation? The multipliers themselves now have a really interesting property:
+they loop every 4 digit. The value from right to left goes from i, to -1, to -i,
+to 1, then back to i. With this, we can create a very naive inefficient number
+system: we can set every 4th digit (counting from the right) one by one to
+create a positive number, and every 2nd digit to create any negative number.
+
+$$ 40009000_{i} = 4 + 9 = 13 $$
+
+$$ 400090_i = -4 -9 = -13 $$
+
+In this number system, we can have multiple different number
+representations for the same number. For example, both $40009000_i$ and
+$50008000_i$  denotes the number 13. Donald Knuth proposed a 2i-based number
+system called [Quater-imaginary
+base](https://en.wikipedia.org/wiki/Quater-imaginary_base)
+
+## The Golden Ratio - Phinary
+
+This system is also called base-$\phi$, golden ratio base, or way cooler,
+"[phinary](https://en.wikipedia.org/wiki/Golden_ratio_base)".
+
+This number system stems from the fact that any exponent of $\phi$ can be
+rewritten as $a+b\phi$. By definition, $\phi^2 = \phi + 1$, so any higher
+exponent, for example, $\phi^3$, can be rewritten as
+
+$$ \phi^3 = \phi * \phi^2 = \phi (\phi + 1 ) = \phi^2 + \phi = (\phi+1) + \phi = 1+2\phi $$
+
+The same is also true with negative exponents: $$ \phi^{-2}=1 - \phi $$
+
+With this, the number 2 in decimal can be represented as 
+
+$$ 10.01_\phi = \phi^1 + \phi^{-2} = (1 + \phi) + (1 - \phi) = 2 $$ 
+
+## The base doesn't have to stay the same - Factoradic
+
+Another interesting base is called "[factoradic](https://en.wikipedia.org/wiki/Factorial_number_system)" or
+"factorial base". In this system, the place value from right to left is 0!, 1!,
+2!, 3!, and so on. The highest possible digit in each place is also
+correspondingly determined - the digit of 5! can only be maximal 5, for example.
+So 341010 in factoradic will be $$ 341010_! =
+3*5! + 4*4! + 1*3! + 0*2! + 1*1! + 0*0! = 463_{10} $$ Another similar number
+system use
+[combinatorics](https://en.wikipedia.org/wiki/Combinatorial_number_system)
+instead of factorial for the place value. 
