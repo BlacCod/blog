@@ -1,5 +1,6 @@
 import Link from "@/components/Link";
 import { ShortBlogList } from "@/components/ShortBlogList";
+import { ShortTilList } from "@/components/ShortTilList";
 
 export default function Home() {
   return (
@@ -18,17 +19,17 @@ export default function Home() {
             <Link href="/til"> snippets of interesting things I learned.</Link>
           </p>
           <p>
-            Link to my public projects on{" "}
-            <Link href="https://www.github.com/blaccod" external>
-              GitHub
-            </Link>
-            , or send me an email at contact [at] vuhuynguyen.com
+            View my public projects on{" "}
+            <Link href="https://www.github.com/blaccod">GitHub</Link>, or send
+            me an email at contact [at] vuhuynguyen.com
           </p>
         </section>
         <section>
           <ShortBlogList />
         </section>
-        <section>LIST OF TILS</section>
+        <section>
+          <ShortTilList />
+        </section>
       </div>
     </>
   );

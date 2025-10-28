@@ -10,6 +10,13 @@ export default function Posts() {
   console.log(posts);
   return (
     <div>
+      <h2>TILs</h2>
+      <p>
+        Some small things I've learned, inspired by{" "}
+        <Link href="https://til.simonwillison.net/">
+          Simon Willison's TIL page
+        </Link>
+      </p>
       <ul>
         {posts.map((post: any) => (
           <li key={post.slug}>
